@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.20.0)
+project(xls2xlsx_master)
+# set(CMAKE_EXE_LINKER_FLAGS "-static")
+add_executable(${PROJECT_NAME} main.cpp)
+target_link_libraries(${PROJECT_NAME} OpenXLSX::OpenXLSX nlohmann_json::nlohmann_json)
