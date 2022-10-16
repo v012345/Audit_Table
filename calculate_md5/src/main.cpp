@@ -24,7 +24,7 @@ int main(int argc, char const *argv[])
     std::string last_name = (*last).first;
     for (auto &&i : simpleJson)
     {
-        json << "\t\"" << i.first << "\":\"" << i.second << "\"";
+        json << "    \"" << i.first << "\": \"" << i.second << "\"";
         last_name != i.first &&json << ",";
         json << std::endl;
     }

@@ -10,6 +10,7 @@
 using json = nlohmann::json;
 int main(int argc, char const *argv[])
 {
+    // return 0;
     auto start = std::chrono::high_resolution_clock::now();
     // std::cout << "xls to xlsx..." << std::endl;
     // std::cout << "md5 need to be implemented" << std::endl;
@@ -82,7 +83,7 @@ int main(int argc, char const *argv[])
     std::cout << "convert " << convert_count << " xls files" << std::endl;
 
     std::ofstream xlsx_json_onput("xlsx_md5_map.json");
-    xlsx_json_onput << xls_json;
+    xlsx_json_onput << std::setw(4) << xls_json;
     xlsx_json_onput.close();
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
