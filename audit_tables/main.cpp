@@ -1,4 +1,4 @@
-#include <OpenXLSX.hpp>
+#include "table.h"
 #include <string>
 #include <iostream>
 #include <map>
@@ -12,7 +12,7 @@
 #include <thread>
 #include <chrono>
 using namespace std::chrono;
-#include "table.h"
+
 // namespace fs = std::filesystem;
 using json = nlohmann::json;
 using namespace OpenXLSX;
@@ -29,11 +29,13 @@ int main()
 
     // 处理 has one 的关系
     json has_one_conditions = rule["has_one_conditions"];
-    return 0;
+    // return 0;
     for (auto &has_one_condition : has_one_conditions)
     {
         std::string main_table_name = has_one_condition["table"].get<std::string>();
         std::string main_table_path = "./xlsx/" + main_table_name + ".xlsx";
+        // std::cout << main_table_name << std::endl;
+        // std::cout << main_table_path << std::endl;
         Table main_table(main_table_path, main_table_name);
 
         std::cout << "====== " << main_table.getName() << " ====== " << std::endl;

@@ -83,9 +83,9 @@ void Table::insertForeignKeys(std::string foreign_key)
                 }
                 catch (const std::exception &e)
                 {
-                    if ( this->name != "item_artifact_star")
+                    if (this->name != "item_artifact_star")
                     {
-                       std::cout << this->name << " column(" << foreign_key << ") has a value " << segment << " which can convert to int" << std::endl;
+                        std::cout << this->name << " column(" << foreign_key << ") has a value " << segment << " which can convert to int" << std::endl;
                     }
                     // std::cerr << e.what() << '\n';
                 }

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.20.0)
 project(check_table)
 add_subdirectory(nlohmann_json)
-add_subdirectory(OpenXLSX)
+add_subdirectory(OpenXLSX/OpenXLSX)
 add_subdirectory(xls2xlsx_worker)
 add_subdirectory(xls2xlsx_master)
 add_subdirectory(calculate_md5)

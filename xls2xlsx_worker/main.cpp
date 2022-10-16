@@ -26,7 +26,7 @@ int main(int argc, char const *argv[])
         std::string input = argv[i];
         std::cout << input << std::endl;
         intrusive_ptr<IWorkbook> wb = Factory::CreateIWorkbook(sourcePath->StringAppend(new String(input.append(".xls").c_str())));
-        wb->Save(resultPath->StringAppend(new String(input.append(".xlsx").c_str())));
+        wb->Save(resultPath->StringAppend(new String(input.append("x").c_str())));
     }
     return 0;
 }

@@ -112,6 +112,8 @@
         "xlocmes": "cpp",
         "xlocmon": "cpp",
         "xloctime": "cpp",
-        "xtree": "cpp"
+        "xtree": "cpp",
+        "string_view": "cpp",
+        "xthread": "cpp"
     },
 }

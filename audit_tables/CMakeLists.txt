@@ -3,7 +3,7 @@ project(audit_tables)
 
 # set(JSON_Install OFF CACHE INTERNAL "")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-
+# add_subdirectory(OpenXLSX)
 # set(CMAKE_EXE_LINKER_FLAGS "-static")
 add_executable(${PROJECT_NAME} main.cpp src/table.cpp)
 target_include_directories(${PROJECT_NAME}
