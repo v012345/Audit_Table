@@ -1,0 +1,539 @@
+{
+    "has_one_conditions": [
+        {
+            "table": "buff_base",
+            "exclude": [
+                1,
+                2,
+                4
+            ],
+            "has": [
+                {
+                    "table": "buff_rule",
+                    "between": [
+                        0,
+                        2147483647
+                    ],
+                    "by": "rule_id",
+                    "to": "id"
+                }
+            ]
+        },
+        {
+            "table": "action_attack",
+            "exclude": [
+                1,
+                2,
+                4
+            ],
+            "has": [
+                {
+                    "table": "entity_effect",
+                    "between": [
+                        0,
+                        1999999
+                    ],
+                    "by": "effect_ids",
+                    "to": "id"
+                },
+                {
+                    "table": "entity_effect2",
+                    "between": [
+                        2000000,
+                        2147483647
+                    ],
+                    "by": "effect_ids",
+                    "to": "id"
+                },
+                {
+                    "table": "buff_base",
+                    "between": [
+                        1,
+                        2147483647
+                    ],
+                    "by": "buff_ids",
+                    "to": "id"
+                },
+                {
+                    "table": "res_sound",
+                    "between": [
+                        1,
+                        2147483647
+                    ],
+                    "by": "sound_id",
+                    "to": "id"
+                }
+            ]
+        },
+        {
+            "table": "entity_effect2",
+            "exclude": [],
+            "has": [
+                {
+                    "table": "entity_effect2",
+                    "between": [
+                        0,
+                        2147483647
+                    ],
+                    "by": "next_effect_id",
+                    "to": "id"
+                }
+            ]
+        },
+        {
+            "table": "item_artifact_config_type2",
+            "exclude": [],
+            "has": [
+                {
+                    "table": "config_get_type",
+                    "between": [
+                        0,
+                        2147483647
+                    ],
+                    "by": "access_type_id",
+                    "to": "id"
+                }
+            ]
+        },
+        {
+            "table": "item_gift",
+            "exclude": [],
+            "has": [
+                {
+                    "table": "item_equip_common",
+                    "between": [
+                        2000,
+                        5999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_fashion_role_type1",
+                    "between": [
+                        6000,
+                        7999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_fashion_role_type2",
+                    "between": [
+                        6000,
+                        7999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_fashion_role_type4",
+                    "between": [
+                        6000,
+                        7999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_fashion_common",
+                    "between": [
+                        1,
+                        10
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_crest",
+                    "between": [
+                        8000,
+                        8999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_crest",
+                    "between": [
+                        9000,
+                        9999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_material",
+                    "between": [
+                        10000,
+                        13999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_gift",
+                    "between": [
+                        14000,
+                        15999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_buff",
+                    "between": [
+                        16000,
+                        16999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_spirit",
+                    "between": [
+                        17000,
+                        17999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_money",
+                    "between": [
+                        18000,
+                        18999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_enchantstone",
+                    "between": [
+                        19000,
+                        19999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_make_paper",
+                    "between": [
+                        20000,
+                        29999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_equip_common",
+                    "between": [
+                        40000,
+                        49999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "skill_chip",
+                    "between": [
+                        50000,
+                        59999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_make_paper",
+                    "between": [
+                        60000,
+                        60999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_debris",
+                    "between": [
+                        61000,
+                        80999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_title",
+                    "between": [
+                        81000,
+                        89999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_gem",
+                    "between": [
+                        90000,
+                        99999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_material",
+                    "between": [
+                        100000,
+                        109999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_progress_material",
+                    "between": [
+                        110000,
+                        129999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_redpacket",
+                    "between": [
+                        130000,
+                        139999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_artifact_config_type1",
+                    "between": [
+                        140000,
+                        149999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_artifact_config_type2",
+                    "between": [
+                        140000,
+                        149999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_artifact_config_type4",
+                    "between": [
+                        140000,
+                        149999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_artifact_skin",
+                    "between": [
+                        150000,
+                        159999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_profile_role1",
+                    "between": [
+                        160000,
+                        169999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_profile_role2",
+                    "between": [
+                        160000,
+                        169999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_profile_role4",
+                    "between": [
+                        160000,
+                        169999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_superskill_config_type1",
+                    "between": [
+                        170000,
+                        179999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_superskill_config_type2",
+                    "between": [
+                        170000,
+                        179999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_superskill_config_type4",
+                    "between": [
+                        170000,
+                        179999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_spirit_star_ticket",
+                    "between": [
+                        180000,
+                        189999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_partner",
+                    "between": [
+                        190000,
+                        199999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "other_partner_arms",
+                    "between": [
+                        200000,
+                        209999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_gift_exp",
+                    "between": [
+                        210000,
+                        219999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_partner_fashion",
+                    "between": [
+                        220000,
+                        229999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                }
+            ]
+        },
+        {
+            "table": "other_shop_goods",
+            "exclude": [],
+            "has": [
+                {
+                    "table": "item_gift",
+                    "between": [
+                        14000,
+                        15999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_material",
+                    "between": [
+                        10000,
+                        13999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_spirit",
+                    "between": [
+                        17000,
+                        17999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_money",
+                    "between": [
+                        18000,
+                        18999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_material",
+                    "between": [
+                        100000,
+                        109999
+                    ],
+                    "by": "item_id",
+                    "to": "id"
+                }
+            ]
+        },
+        {
+            "table": "item_artifact_star",
+            "exclude": [],
+            "has": [
+                {
+                    "table": "res_spine",
+                    "between": [
+                        1,
+                        2147483647
+                    ],
+                    "by": "spine_ui_id",
+                    "to": "id"
+                }
+            ]
+        },
+        {
+            "table": "item_suit",
+            "exclude": [],
+            "has": [
+                {
+                    "table": "text_name",
+                    "between": [
+                        1,
+                        2147483647
+                    ],
+                    "by": "name_id",
+                    "to": "id"
+                }
+            ]
+        }
+    ],
+    "column_type_check": [
+        {
+            "table": "item_artifact_star",
+            "columns": [
+                {
+                    "name": "discard",
+                    "type": "int"
+                }
+            ]
+        }
+    ]
+}
