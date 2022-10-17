@@ -21,6 +21,10 @@ std::string Table::getName()
 {
     return this->table_name;
 };
+bool Table::hasId(std::string id)
+{
+    return this->id_to_row_number.find(id) != this->id_to_row_number.end();
+}
 bool Table::checkColumnType(std::string column_name, std::string type)
 {
     // this->sheet.column()

@@ -45,6 +45,7 @@ public:
     std::set<std::int32_t> getPrimaryKey();
     OpenXLSX::XLCellValue getData(std::string id, std::string column_name);
     bool checkColumnType(std::string column_name, std::string type);
+    bool hasId(std::string id);
     int getRealRowCount();
     std::string getName();
     std::map<std::string, enum ColumnType> getColumns();
