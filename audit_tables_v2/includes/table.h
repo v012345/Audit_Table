@@ -23,7 +23,7 @@ private:
     OpenXLSX::XLDocument table;
     // xlsx 文件左下角的分页
     OpenXLSX::XLWorksheet sheet;
-    int real_row_count;
+    uint32_t real_row_count;
     // 表头
     std::map<std::string, std::uint32_t> table_head;
     //数据
@@ -43,6 +43,7 @@ public:
     void setPrimaryKey(std::string primary_key);
     std::set<std::int32_t> getForeignKey(std::string foreign_key);
     std::set<std::int32_t> getPrimaryKey();
+    OpenXLSX::XLCellValue getData(std::string id, std::string column_name);
     bool checkColumnType(std::string column_name, std::string type);
     int getRealRowCount();
     std::string getName();

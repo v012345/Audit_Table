@@ -111,35 +111,26 @@ void Table::init_primary_key_map(std::string primary_ke)
     OpenXLSX::XLRowIterator row = this->sheet.rows().begin();
     while (row != this->sheet.rows().end())
     {
+        OpenXLSX::XLCellValue cell_value;
         try
         {
-            OpenXLSX::XLCellValue cell_value = std::vector<OpenXLSX::XLCellValue>(row->values()).at(column_index);
-            // std::cout << cell_value << std::endl;
-            if (cell_value.type() == OpenXLSX::XLValueType::Integer)
-            {
-                this->id_to_row_number.insert(std::make_pair(std::to_string(cell_value.get<int64_t>()), row_index));
-            }
-            else if (cell_value.type() == OpenXLSX::XLValueType::String)
-            {
-                this->id_to_row_number.insert(std::make_pair(cell_value.get<std::string>(), row_index));
-            }
-            else
-            {
-                break;
-                //      if (cell_value.type() == OpenXLSX::XLValueType::Empty)
-                // {
-                // }
-                // else
-            }
+            cell_value = (row->values<std::vector<OpenXLSX::XLCellValue>>()).at(column_index);
         }
         catch (const std::exception &e)
         {
-            std::cerr << e.what() << '\n';
+            row_index--;
             break;
         }
+        if (cell_value.type() == OpenXLSX::XLValueType::Integer)
+            this->id_to_row_number.insert(std::make_pair(std::to_string(cell_value.get<int64_t>()), row_index));
+        else if (cell_value.type() == OpenXLSX::XLValueType::String)
+            this->id_to_row_number.insert(std::make_pair(cell_value.get<std::string>(), row_index));
+        else
+            break;
         row++;
         row_index++;
     }
+    this->real_row_count = row_index;
 }
 std::map<std::string, std::set<std::int32_t>> Table::getForeignKeys()
 {
@@ -152,6 +143,11 @@ std::map<std::string, std::uint32_t> Table::getTableHead()
 std::set<std::int32_t> Table::getForeignKey(std::string foreign_key)
 {
     return this->foreign_keys.at(foreign_key);
+}
+
+OpenXLSX::XLCellValue Table::getData(std::string id, std::string column_name)
+{
+    return this->sheet.row(this->id_to_row_number.at(id)).values<std::vector<OpenXLSX::XLCellValue>>().at(this->table_head.at(column_name));
 }
 
 std::set<std::int32_t> Table::getPrimaryKey()

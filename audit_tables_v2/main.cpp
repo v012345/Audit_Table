@@ -101,8 +101,6 @@ void audit_init_table_config(json config)
     {
         std::string table_name = object["table"].get<std::string>();
         Table *table = tableManager->getTable(table_name);
-
-        std::cout << "====== " << table->getName() << " ====== " << std::endl;
         std::string primary_key = object["primary_key"].get<std::string>();
         table->init_primary_key_map(primary_key);
     }
@@ -110,6 +108,7 @@ void audit_init_table_config(json config)
 int main()
 {
     // 更新数值表
+    system("chcp 65001");
     system(".\\xls2xlsx_master.exe");
     json rule;
 
@@ -142,6 +141,8 @@ int main()
     // audit_has_one_conditions(rule["has_one_conditions"]);
     // audit_column_type(rule["column_type_check"]);
     audit_init_table_config(rule["table_config"]);
+
+    std::cout << table->getData("15000", "desc") << std::endl;
     //
     // // return 0;
     // auto start = high_resolution_clock::now();
@@ -189,8 +190,7 @@ int main()
     // auto duration = duration_cast<microseconds>(stop - start);
     // std::cout << "run time " << duration.count() / 1000000 << " s" << std::endl;
     // system("pause");
-    std::cout
-        << "handled " << tableManager->getTableNumber() << " tables" << std::endl;
+    std::cout << "handled " << tableManager->getTableNumber() << " tables" << std::endl;
     // system("pause");
     return 0;
 }
