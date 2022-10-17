@@ -1,35 +1,16 @@
 #include "table.h"
-Table::Table(std::string path)
+
+Table::Table(std::string path, std::string table_name) : table_name(table_name)
 {
-    this->table_name = path;
     this->table.open(path);
     this->sheet = table.workbook().worksheet(table.workbook().worksheetNames()[0]);
-
-    std::map<std::string, std::uint32_t> head;
     OpenXLSX::XLRowIterator row = sheet.rows().begin();
-    int index = 0;
     for (auto &value : std::vector<OpenXLSX::XLCellValue>(row->values()))
-    {
-        head.insert(std::make_pair(value.get<std::string>(), index));
-        index++;
-    }
-    this->head = head;
+        this->columns.insert(std::make_pair(value.get<std::string>(), UNKNOWN));
 }
-Table::Table(std::string path, std::string table_name)
+std::map<std::string, enum ColumnType> Table::getColumns()
 {
-    this->table_name = table_name;
-    this->table.open(path);
-    this->sheet = table.workbook().worksheet(table.workbook().worksheetNames()[0]);
-
-    std::map<std::string, std::uint32_t> head;
-    OpenXLSX::XLRowIterator row = sheet.rows().begin();
-    int index = 0;
-    for (auto &value : std::vector<OpenXLSX::XLCellValue>(row->values()))
-    {
-        head.insert(std::make_pair(value.get<std::string>(), index));
-        index++;
-    }
-    this->head = head;
+    return this->columns;
 }
 std::string Table::getName()
 {

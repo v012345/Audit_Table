@@ -4,10 +4,19 @@
 #include <map>
 #include <vector>
 #include <set>
+
+enum ColumnType
+{
+    ARRAY,
+    NUMBER,
+    STRING,
+    UNKNOWN
+};
 class Table
 {
 private:
     std::string table_name;
+    std::map<std::string, enum ColumnType> columns;
     // xlsx 文件
     OpenXLSX::XLDocument table;
     // xlsx 文件左下角的分页
@@ -21,7 +30,6 @@ private:
     std::set<std::int32_t> primary_key;
 
 public:
-    Table(std::string path);
     Table(std::string path, std::string table_name);
     std::map<std::string, std::uint32_t> getHead();
     std::vector<OpenXLSX::XLCellValue> getColumn(std::string column_name);
@@ -32,5 +40,6 @@ public:
     std::set<std::int32_t> getPrimaryKey();
     int getRealRowCount();
     std::string getName();
+    std::map<std::string, enum ColumnType> getColumns();
     ~Table();
 };
