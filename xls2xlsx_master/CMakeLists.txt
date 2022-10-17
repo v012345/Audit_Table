@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.20.0)
 project(xls2xlsx_master)
+
 # set(nlohmann_json_DIR "../nlohmann_json/cmake")
 # # set(CMAKE_EXE_LINKER_FLAGS "-static")
 # find_package(nlohmann_json 3.2.0 REQUIRED)
@@ -8,3 +9,11 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 add_executable(${PROJECT_NAME} main.cpp)
 target_link_libraries(${PROJECT_NAME} nlohmann_json::nlohmann_json)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
+
+if(NOT EXISTS "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/action_attack_effect.xls")
+    file(GLOB XLS xls/*.xls)
+
+    foreach(xls_file IN LISTS XLS)
+        configure_file(${xls_file} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/ COPYONLY)
+    endforeach()
+endif()
