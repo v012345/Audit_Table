@@ -4,9 +4,14 @@ Table::Table(std::string path, std::string table_name) : table_name(table_name)
 {
     this->table.open(path);
     this->sheet = table.workbook().worksheet(table.workbook().worksheetNames()[0]);
+
     OpenXLSX::XLRowIterator row = sheet.rows().begin();
-    for (auto &value : std::vector<OpenXLSX::XLCellValue>(row->values()))
+    uint16_t column_index = 0;
+    for (auto &&value : std::vector<OpenXLSX::XLCellValue>(row->values()))
+    {
         this->columns.insert(std::make_pair(value.get<std::string>(), UNKNOWN));
+        this->table_head.insert(std::make_pair(value.get<std::string>(), column_index++));
+    }
 }
 std::map<std::string, enum ColumnType> Table::getColumns()
 {
@@ -16,6 +21,29 @@ std::string Table::getName()
 {
     return this->table_name;
 };
+bool Table::checkColumnType(std::string column_name, std::string type)
+{
+    // this->sheet.column()
+    auto columns = this->sheet.column(0);
+    // for (auto &&i : columns)
+    // {
+    // }
+
+    if (type == "number")
+    {
+        /* code */
+    }
+    else if (type == "string")
+    {
+        /* code */
+    }
+    else if (type == "array")
+    {
+        /* code */
+    }
+
+    return false;
+}
 void Table::setPrimaryKey(std::string primary_key)
 {
     std::set<std::int32_t> primary_keys;
@@ -76,13 +104,50 @@ void Table::insertForeignKeys(std::string foreign_key)
 
     this->foreign_keys.insert(std::make_pair(foreign_key, foreign_keys));
 }
+void Table::init_primary_key_map(std::string primary_ke)
+{
+    uint32_t column_index = this->table_head.at(primary_ke);
+    uint32_t row_index = 1;
+    OpenXLSX::XLRowIterator row = this->sheet.rows().begin();
+    while (row != this->sheet.rows().end())
+    {
+        try
+        {
+            OpenXLSX::XLCellValue cell_value = std::vector<OpenXLSX::XLCellValue>(row->values()).at(column_index);
+            // std::cout << cell_value << std::endl;
+            if (cell_value.type() == OpenXLSX::XLValueType::Integer)
+            {
+                this->id_to_row_number.insert(std::make_pair(std::to_string(cell_value.get<int64_t>()), row_index));
+            }
+            else if (cell_value.type() == OpenXLSX::XLValueType::String)
+            {
+                this->id_to_row_number.insert(std::make_pair(cell_value.get<std::string>(), row_index));
+            }
+            else
+            {
+                break;
+                //      if (cell_value.type() == OpenXLSX::XLValueType::Empty)
+                // {
+                // }
+                // else
+            }
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << e.what() << '\n';
+            break;
+        }
+        row++;
+        row_index++;
+    }
+}
 std::map<std::string, std::set<std::int32_t>> Table::getForeignKeys()
 {
     return this->foreign_keys;
 }
-std::map<std::string, std::uint32_t> Table::getHead()
+std::map<std::string, std::uint32_t> Table::getTableHead()
 {
-    return this->head;
+    return this->table_head;
 }
 std::set<std::int32_t> Table::getForeignKey(std::string foreign_key)
 {
@@ -94,6 +159,7 @@ std::set<std::int32_t> Table::getPrimaryKey()
     return this->primary_key;
 }
 
+// 没有取整列的方法 , 还是我没找到?
 std::vector<OpenXLSX::XLCellValue> Table::getColumn(std::string column_name)
 {
     if (this->data.find(column_name) == this->data.end())
@@ -106,7 +172,7 @@ std::vector<OpenXLSX::XLCellValue> Table::getColumn(std::string column_name)
         {
             try
             {
-                OpenXLSX::XLCellValue m = std::vector<OpenXLSX::XLCellValue>(row->values()).at(this->head.at(column_name));
+                OpenXLSX::XLCellValue m = std::vector<OpenXLSX::XLCellValue>(row->values()).at(this->table_head.at(column_name));
                 if (m.type() == OpenXLSX::XLValueType::Empty)
                     break;
                 column_data.push_back(m);

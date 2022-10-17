@@ -602,7 +602,7 @@
             "table": "config_activity_find",
             "columns": [
                 {
-                    "name": "id",
+                    "name": "system_id",
                     "type": "number"
                 }
             ]
@@ -4039,24 +4039,1568 @@
                     "type": "number"
                 }
             ]
+        }
+    ],
+    "table_config": [
+        {
+            "table": "action_attack",
+            "primary_key": "id"
         },
         {
-            "table": "example",
-            "columns": [
-                {
-                    "name": "id",
-                    "type": "number"
-                }
-            ]
+            "table": "action_attack_effect",
+            "primary_key": "id"
         },
         {
-            "table": "example",
-            "columns": [
-                {
-                    "name": "id",
-                    "type": "number"
-                }
-            ]
+            "table": "action_attack_effect2",
+            "primary_key": "id"
+        },
+        {
+            "table": "action_camera",
+            "primary_key": "id"
+        },
+        {
+            "table": "action_displacement",
+            "primary_key": "id"
+        },
+        {
+            "table": "attribute_change",
+            "primary_key": "id"
+        },
+        {
+            "table": "buff_base",
+            "primary_key": "id"
+        },
+        {
+            "table": "buff_rule",
+            "primary_key": "id"
+        },
+        {
+            "table": "config_activity_find",
+            "primary_key": "system_id"
+        },
+        {
+            "table": "config_activity_notice",
+            "primary_key": "id"
+        },
+        {
+            "table": "config_agility_task",
+            "primary_key": "id"
+        },
+        {
+            "table": "config_auto_bourse",
+            "primary_key": "id"
+        },
+        {
+            "table": "config_banner",
+            "primary_key": "id"
+        },
+        {
+            "table": "config_color",
+            "primary_key": "id"
+        },
+        {
+            "table": "config_common_dialog",
+            "primary_key": "id"
+        },
+        {
+            "table": "config_get_type",
+            "primary_key": "id"
+        },
+        {
+            "table": "config_head",
+            "primary_key": "id"
+        },
+        {
+            "table": "config_lottery",
+            "primary_key": "id"
+        },
+        {
+            "table": "config_operating_activity",
+            "primary_key": "id"
+        },
+        {
+            "table": "config_pvp_ai",
+            "primary_key": "id"
+        },
+        {
+            "table": "config_quality",
+            "primary_key": "id"
+        },
+        {
+            "table": "config_system_times",
+            "primary_key": "id"
+        },
+        {
+            "table": "config_team",
+            "primary_key": "id"
+        },
+        {
+            "table": "detection_third_party",
+            "primary_key": "level"
+        },
+        {
+            "table": "entity_ai",
+            "primary_key": "id"
+        },
+        {
+            "table": "entity_attribute",
+            "primary_key": "id"
+        },
+        {
+            "table": "entity_effect",
+            "primary_key": "id"
+        },
+        {
+            "table": "entity_effect2",
+            "primary_key": "id"
+        },
+        {
+            "table": "entity_fight_value",
+            "primary_key": "id"
+        },
+        {
+            "table": "entity_goods",
+            "primary_key": "id"
+        },
+        {
+            "table": "entity_npc",
+            "primary_key": "id"
+        },
+        {
+            "table": "entity_obstacle",
+            "primary_key": "id"
+        },
+        {
+            "table": "entity_pet",
+            "primary_key": "id"
+        },
+        {
+            "table": "entity_portal",
+            "primary_key": "id"
+        },
+        {
+            "table": "entity_role",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_artifact_config_type1",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_artifact_config_type2",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_artifact_config_type3",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_artifact_config_type4",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_artifact_extend",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_artifact_level",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_artifact_progress",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_artifact_skill",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_artifact_skin",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_artifact_star",
+            "primary_key": "ID"
+        },
+        {
+            "table": "item_artifact_starup",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_base",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_buff",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_competition",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_competition_gift",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_competition_task",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_crest",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_debris",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_debris_change",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_enchantstone",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_equip_breach",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_equip_common",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_equip_intensify",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_equip_intensify_body",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_equip_intensify_value",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_equip_role_type1",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_equip_role_type2",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_equip_role_type3",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_equip_role_type4",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_fashion_common",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_fashion_role_type1",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_fashion_role_type2",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_fashion_role_type3",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_fashion_role_type4",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_fashion_suit",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_forge",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_gashapon_probability",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_gashapon_reward",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_gashapon_reward_preview",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_gem",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_gem_level",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_gem_levelcost",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_gift",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_gift_exp",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_make_equip",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_make_equip_suit",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_make_paper",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_material",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_money",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_partner",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_partner_fashion",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_partner_skill",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_partner_star",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_partner_story",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_profile_role1",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_profile_role2",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_profile_role3",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_profile_role4",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_progress_material",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_redpacket",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_refined",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_spirit",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_spirit_awaken",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_spirit_breakthrough",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_spirit_progress",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_spirit_progress_material",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_spirit_star",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_spirit_star_ticket",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_spirit_upstars",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_spirit_upstars_attribute",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_spirit_value",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_sprite_skill",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_sprite_skill_random",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_suit",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_superskill_config_type1",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_superskill_config_type2",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_superskill_config_type3",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_superskill_config_type4",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_title",
+            "primary_key": "id"
+        },
+        {
+            "table": "item_update_material",
+            "primary_key": "material_id"
+        },
+        {
+            "table": "lottery_artifact_area",
+            "primary_key": "id"
+        },
+        {
+            "table": "lottery_artifact_limit",
+            "primary_key": "id"
+        },
+        {
+            "table": "lottery_artifact_limit_time",
+            "primary_key": "id"
+        },
+        {
+            "table": "lottery_artifact_pond",
+            "primary_key": "id"
+        },
+        {
+            "table": "lottery_artifact_probability",
+            "primary_key": "id"
+        },
+        {
+            "table": "lottery_equipment_area",
+            "primary_key": "id"
+        },
+        {
+            "table": "lottery_equipment_pond",
+            "primary_key": "id"
+        },
+        {
+            "table": "lottery_equipment_probability",
+            "primary_key": "id"
+        },
+        {
+            "table": "lottery_fashion_area",
+            "primary_key": "id"
+        },
+        {
+            "table": "lottery_fashion_pond",
+            "primary_key": "id"
+        },
+        {
+            "table": "lottery_fashion_probability",
+            "primary_key": "id"
+        },
+        {
+            "table": "lottery_fashion_reward",
+            "primary_key": "id"
+        },
+        {
+            "table": "lottery_limit_time_points",
+            "primary_key": "id"
+        },
+        {
+            "table": "lottery_limit_time_rank",
+            "primary_key": "id"
+        },
+        {
+            "table": "lottery_spirit_area",
+            "primary_key": "id"
+        },
+        {
+            "table": "lottery_spirit_pond",
+            "primary_key": "id"
+        },
+        {
+            "table": "lottery_spirit_probability",
+            "primary_key": "id"
+        },
+        {
+            "table": "lottery_spirit_sniper",
+            "primary_key": "id"
+        },
+        {
+            "table": "map_activity_chapter",
+            "primary_key": "id"
+        },
+        {
+            "table": "map_activity_copy",
+            "primary_key": "id"
+        },
+        {
+            "table": "map_camp",
+            "primary_key": "id"
+        },
+        {
+            "table": "map_chapter",
+            "primary_key": "id"
+        },
+        {
+            "table": "map_city",
+            "primary_key": "id"
+        },
+        {
+            "table": "map_copy",
+            "primary_key": "id"
+        },
+        {
+            "table": "map_copy_bestdrop",
+            "primary_key": "id"
+        },
+        {
+            "table": "map_copy_card",
+            "primary_key": "id"
+        },
+        {
+            "table": "map_copy_main",
+            "primary_key": "id"
+        },
+        {
+            "table": "map_copy_main_task",
+            "primary_key": "id"
+        },
+        {
+            "table": "map_country",
+            "primary_key": "id"
+        },
+        {
+            "table": "map_data",
+            "primary_key": "id"
+        },
+        {
+            "table": "map_province",
+            "primary_key": "id"
+        },
+        {
+            "table": "map_room",
+            "primary_key": "id"
+        },
+        {
+            "table": "map_room2",
+            "primary_key": "id"
+        },
+        {
+            "table": "map_room3",
+            "primary_key": "id"
+        },
+        {
+            "table": "map_stage",
+            "primary_key": "id"
+        },
+        {
+            "table": "map_stage_appraise",
+            "primary_key": "id"
+        },
+        {
+            "table": "name_first",
+            "primary_key": "id"
+        },
+        {
+            "table": "name_man",
+            "primary_key": "id"
+        },
+        {
+            "table": "name_woman",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_7days_activity_award",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_7days_activity_task",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_7days_sign",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_across_server_arena",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_across_server_arena_award",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_across_server_arena_robot",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_across_server_group",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_activity_atlas",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_activity_dimensiontrial_rewards",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_activity_dimension_trial",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_activity_instance_sign",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_activity_linkage_task",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_activity_menu",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_activity_sign",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_activity_task",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_activity_trial",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_activity_trial_config",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_activity_trial_rewards",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_allstar_rac_gift",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_answer",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_arena",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_arena_award",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_arena_robot",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_artifactway",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_artifact_comboskill",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_artifact_skin",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_auction",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_auction_condition",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_auction_pool",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_awake_road",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_backflow_gift",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_backflow_recharge",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_backflow_sign",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_backflow_task",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_battlepass_config",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_battlepass_level",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_battlepass_system_level",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_bossrush",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_bossrush_award",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_bossrush_buff",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_boss_skills",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_bourse",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_cashcow",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_chat_expression",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_chat_title",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_coin_tree",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_college_award",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_college_task",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_commonfunction",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_constellation_buff_base",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_constellation_buff_random",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_constellation_floor",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_constellation_reincarnation",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_constellation_stage",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_dailytask",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_dailytask_config",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_daily_activity",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_daily_liveness_reward",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_daily_liveness_task",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_daily_reward",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_data_collect",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_dimension_copy",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_dimension_drop",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_dimension_reward",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_dimension_task",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_drop",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_enemyattack",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_enemyattack_random",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_everyday_online_task",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_exchange",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_exp",
+            "primary_key": "level"
+        },
+        {
+            "table": "other_expedition",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_formula_config",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_freegifts",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_gashapon",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_gashapon_collect",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_gashapon_task",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_gemstone_tower",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_get_stronger",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_get_stronger_module",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_get_stronger_task",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_godchoose_config",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_godchoose_level",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_godchoose_task",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_growup_gift",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_Infinite",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_Infinite_car",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_Infinite_drop",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_Infinite_fast_drop",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_Infinite_gift",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_Infinite_lv",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_levelreward",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_level_guide",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_level_limit",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_limit",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_limitchallenge_boxlevelup",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_limitchallenge_boxreward",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_limit_exchange",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_limit_gift",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_mail",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_maincitybutton",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_message_push",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_money_tower",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_month_sign",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_nest",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_nest_card",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_openfunction",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_open_server_online_task",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_open_server_upgrade_task",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_partner_arms",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_partner_exp",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_powers",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_powers_core",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_pvp_award",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_pvp_config",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_questionnaire",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_ranktitle",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_rapidlychallenge",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_rapidlychallenge_task",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_resources_gift",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_resource_retrieval",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_resource_stage",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_shop",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_shop_fashionbox",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_shop_goods",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_shop_main",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_shop_shelf",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_shop_skill",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_sound_talk",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_spirit_grade",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_spirit_level",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_story",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_story_data",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_story_set",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_strategy",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_strategy_task",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_superskill",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_superskill_level",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_superskill_star",
+            "primary_key": "ID"
+        },
+        {
+            "table": "other_superskill_starup",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_superskill_studybuff",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_system_menu",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_system_new_menu",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_task",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_tower",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_transfer_data",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_trial",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_trial_rank",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_trial_worldboss",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_vip",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_vip_tip",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_worldboss",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_worldboss_auction",
+            "primary_key": "id"
+        },
+        {
+            "table": "other_worldboss_rank",
+            "primary_key": "id"
+        },
+        {
+            "table": "push_system_massage",
+            "primary_key": "id"
+        },
+        {
+            "table": "pvp_activity_rewards",
+            "primary_key": "id"
+        },
+        {
+            "table": "pvp_ladder_score",
+            "primary_key": "id"
+        },
+        {
+            "table": "pvp_ladder_top_reward",
+            "primary_key": "id"
+        },
+        {
+            "table": "pvp_match_score_plus",
+            "primary_key": "id"
+        },
+        {
+            "table": "pvp_score_steak_coefficient",
+            "primary_key": "id"
+        },
+        {
+            "table": "recharge_accumulative",
+            "primary_key": "id"
+        },
+        {
+            "table": "recharge_card",
+            "primary_key": "id"
+        },
+        {
+            "table": "recharge_daily_gift",
+            "primary_key": "id"
+        },
+        {
+            "table": "recharge_everyday",
+            "primary_key": "id"
+        },
+        {
+            "table": "recharge_frist_rewards",
+            "primary_key": "id"
+        },
+        {
+            "table": "recharge_fund",
+            "primary_key": "id"
+        },
+        {
+            "table": "recharge_main",
+            "primary_key": "id"
+        },
+        {
+            "table": "recharge_official_account_gift",
+            "primary_key": "id"
+        },
+        {
+            "table": "recharge_rebate",
+            "primary_key": "user_id"
+        },
+        {
+            "table": "recharge_return",
+            "primary_key": "id"
+        },
+        {
+            "table": "res_fashion",
+            "primary_key": "id"
+        },
+        {
+            "table": "res_image",
+            "primary_key": "id"
+        },
+        {
+            "table": "res_sound",
+            "primary_key": "id"
+        },
+        {
+            "table": "res_spine",
+            "primary_key": "id"
+        },
+        {
+            "table": "res_video",
+            "primary_key": "id"
+        },
+        {
+            "table": "server_enterkey",
+            "primary_key": "id"
+        },
+        {
+            "table": "skill_ai",
+            "primary_key": "id"
+        },
+        {
+            "table": "skill_attack",
+            "primary_key": "id"
+        },
+        {
+            "table": "skill_attribute_damage",
+            "primary_key": "id"
+        },
+        {
+            "table": "skill_change_system",
+            "primary_key": "skill_id"
+        },
+        {
+            "table": "skill_chip",
+            "primary_key": "id"
+        },
+        {
+            "table": "skill_hit",
+            "primary_key": "id"
+        },
+        {
+            "table": "skill_hurt",
+            "primary_key": "id"
+        },
+        {
+            "table": "skill_leaf",
+            "primary_key": "id"
+        },
+        {
+            "table": "skill_recommend",
+            "primary_key": "id"
+        },
+        {
+            "table": "skill_rock",
+            "primary_key": "id"
+        },
+        {
+            "table": "skill_tree",
+            "primary_key": "id"
+        },
+        {
+            "table": "sound_map_spine",
+            "primary_key": "id"
+        },
+        {
+            "table": "sound_sendmessage",
+            "primary_key": "sendmessage_id"
+        },
+        {
+            "table": "sound_spine",
+            "primary_key": "spine_id"
+        },
+        {
+            "table": "sound_spine_bgm",
+            "primary_key": "spine_id"
+        },
+        {
+            "table": "sound_ui",
+            "primary_key": "view_name"
+        },
+        {
+            "table": "specialability_base",
+            "primary_key": "id"
+        },
+        {
+            "table": "text_announcement",
+            "primary_key": "id"
+        },
+        {
+            "table": "text_answer",
+            "primary_key": "id"
+        },
+        {
+            "table": "text_content",
+            "primary_key": "id"
+        },
+        {
+            "table": "text_error",
+            "primary_key": "id"
+        },
+        {
+            "table": "text_fighttips",
+            "primary_key": "id"
+        },
+        {
+            "table": "text_help",
+            "primary_key": "id"
+        },
+        {
+            "table": "text_mail",
+            "primary_key": "id"
+        },
+        {
+            "table": "text_name",
+            "primary_key": "id"
+        },
+        {
+            "table": "text_sound_talk",
+            "primary_key": "id"
+        },
+        {
+            "table": "text_story",
+            "primary_key": "id"
+        },
+        {
+            "table": "text_task",
+            "primary_key": "id"
+        },
+        {
+            "table": "text_tutor",
+            "primary_key": "id"
+        },
+        {
+            "table": "text_ui",
+            "primary_key": "id"
+        },
+        {
+            "table": "tutor_func_priority",
+            "primary_key": "id"
+        },
+        {
+            "table": "tutor_process",
+            "primary_key": "id"
+        },
+        {
+            "table": "tutor_tips",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_achievement_redpacket",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_activity",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_activity_rank",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_base",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_boss_chapter",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_boss_stage",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_citywar",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_competition",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_competition_city",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_competition_coordinate",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_competition_formula",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_competition_merit",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_competition_show",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_crystal",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_crystal_other",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_goalkeeper",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_goalkeeper_rank",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_positon",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_salary",
+            "primary_key": "union_lv"
+        },
+        {
+            "table": "union_salary_gift",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_sign",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_sign_gift",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_sign_redpacket",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_skill",
+            "primary_key": "id"
+        },
+        {
+            "table": "union_task",
+            "primary_key": "id"
+        },
+        {
+            "table": "world_config",
+            "primary_key": "id"
+        },
+        {
+            "table": "world_lv_gift",
+            "primary_key": "id"
         }
     ]
 }
