@@ -12,6 +12,7 @@ target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 
 if(NOT EXISTS "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/action_attack_effect.xls")
     file(GLOB XLS xls/*.xls)
+    file(MAKE_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 
     foreach(xls_file IN LISTS XLS)
         configure_file(${xls_file} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/ COPYONLY)
