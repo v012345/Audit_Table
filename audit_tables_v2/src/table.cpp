@@ -10,6 +10,7 @@ Table::Table(std::string path, std::string table_name) : table_name(table_name)
     for (auto &&value : std::vector<OpenXLSX::XLCellValue>(row->values()))
     {
         this->columns.insert(std::make_pair(value.get<std::string>(), UNKNOWN));
+        this->columns_type.insert(std::make_pair(value.get<std::string>(), UNKNOWN));
         this->table_head.insert(std::make_pair(value.get<std::string>(), column_index++));
     }
 }
@@ -25,10 +26,34 @@ bool Table::hasId(std::string id)
 {
     return this->id_to_row_number.find(id) != this->id_to_row_number.end();
 }
+ColumnType Table::getColumnType(std::string column_name)
+{
+    return this->columns_type.at(column_name);
+}
+
+void Table::setColumnType(std::string column_name, std::string type)
+{
+    if (type == "number")
+    {
+        this->columns_type.at(column_name) = NUMBER;
+    }
+    else if (type == "json")
+    {
+        this->columns_type.at(column_name) = JSON;
+    }
+    else if (type == "string")
+    {
+        this->columns_type.at(column_name) = STRING;
+    }
+    else if (type == "array")
+    {
+        this->columns_type.at(column_name) = ARRAY;
+    }
+}
 bool Table::checkColumnType(std::string column_name, std::string type)
 {
     // this->sheet.column()
-    auto columns = this->sheet.column(0);
+    // auto columns = this->sheet.column(0);
     // for (auto &&i : columns)
     // {
     // }
@@ -135,6 +160,7 @@ void Table::init_primary_key_map(std::string primary_ke)
         row_index++;
     }
     this->real_row_count = row_index;
+    this->data_row_count = row_index - 1;
 }
 std::map<std::string, std::set<std::int32_t>> Table::getForeignKeys()
 {
@@ -157,6 +183,21 @@ OpenXLSX::XLCellValue Table::getData(std::string id, std::string column_name)
 std::set<std::int32_t> Table::getPrimaryKey()
 {
     return this->primary_key;
+}
+std::vector<OpenXLSX::XLCellValue> Table::getColumnData(std::string column_name)
+{
+    if (this->data.find(column_name) == this->data.end())
+    {
+        OpenXLSX::XLRowRange rows = sheet.rows(2, this->data_row_count);
+        std::vector<OpenXLSX::XLCellValue> column_data;
+        auto column_index = this->table_head.at(column_name);
+        for (auto &&row : rows)
+        {
+            column_data.push_back(row.values<std::vector<OpenXLSX::XLCellValue>>().at(column_index));
+        }
+        this->data.insert(std::make_pair(column_name, column_data));
+    }
+    return this->data.at(column_name);
 }
 
 // 没有取整列的方法 , 还是我没找到?

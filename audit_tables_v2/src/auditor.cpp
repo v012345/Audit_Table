@@ -62,12 +62,47 @@ void audit_has_one_conditions(json rule)
         std::string main_table_name = has_one_condition["table"].get<std::string>();
         Table *main_table = tableManager->getTable(main_table_name);
 
-        std::cout << "====== " << main_table->getName() << " ====== " << std::endl;
+        // std::cout << "====== " << main_table->getName() << " ====== " << std::endl;
         std::vector<json> has_ones = has_one_condition["has"].get<std::vector<json>>();
 
         //开打从表
         for (auto &has_one : has_ones)
         {
+            Table *foreign_table = tableManager->getTable(has_one["table"].get<std::string>());
+            std::string colunm_name = has_one["by"].get<std::string>();
+            std::vector<OpenXLSX::XLCellValue> by = main_table->getColumnData(colunm_name);
+            uint32_t row_index = 2;
+            if (main_table->getColumnType(colunm_name) == NUMBER)
+            {
+                for (auto &&i : by)
+                {
+                    std::string v;
+
+                    if (i.type() == OpenXLSX::XLValueType::Integer)
+                    {
+                        v = std::to_string(i.get<int64_t>());
+                    }
+                    else
+                    {
+                        v = i.get<std::string>();
+                    }
+                    if (!foreign_table->hasId(v))
+                    {
+                        std::cout << main_table->getName() << " 第 " << row_index << " 行 , 列 " << colunm_name << " 存在 " << v << std::endl;
+                        std::cout << foreign_table->getName() << " 缺少 id " << v << std::endl;
+                    }
+                    row_index++;
+                }
+            }
+            else if (main_table->getColumnType(colunm_name) == JSON)
+            {
+                 std::cout << main_table->getName() << " 列 " << colunm_name << " 为 JSON" << std::endl;
+            }
+            else if (main_table->getColumnType(colunm_name) == UNKNOWN)
+            {
+                std::cout << main_table->getName() << " 列 " << colunm_name << " 未定义类型" << std::endl;
+            }
+
             //     main_table.insertForeignKeys(has_one["by"].get<std::string>());
             //     std::string foreign_table_name = "./xlsx/" + has_one["table"].get<std::string>() + ".xlsx";
             //     Table foreign_table(foreign_table_name, has_one["table"].get<std::string>());
@@ -93,38 +128,13 @@ void audit_column_type(json rule)
     TableManager *tableManager = TableManager::GetInstance();
     for (auto &&object : rule)
     {
-        std::string main_table_name = object["table"].get<std::string>();
-        Table *main_table = tableManager->getTable(main_table_name);
-
-        std::cout << "====== " << main_table->getName() << " ====== " << std::endl;
+        std::string table_name = object["table"].get<std::string>();
+        Table *table = tableManager->getTable(table_name);
+        ;
         std::vector<json> columns = object["columns"].get<std::vector<json>>();
         for (auto &&column : columns)
         {
-            std::cout << column["name"] << " " << column["type"] << std::endl;
+            table->setColumnType(column["name"].get<std::string>(), column["type"].get<std::string>());
         }
-        // main_table->init_id_map();
-        // break;
-
-        //开打从表
-        // for (auto &has_one : has_ones)
-        // {
-        //     //     main_table.insertForeignKeys(has_one["by"].get<std::string>());
-        //     //     std::string foreign_table_name = "./xlsx/" + has_one["table"].get<std::string>() + ".xlsx";
-        //     //     Table foreign_table(foreign_table_name, has_one["table"].get<std::string>());
-        //     //     foreign_table.setPrimaryKey(has_one["to"].get<std::string>());
-
-        //     //     std::set<int32_t> foreign_id = foreign_table.getPrimaryKey();
-        //     //     std::set<int32_t> main_idsss = main_table.getForeignKey(has_one["by"].get<std::string>());
-        //     //     std::vector<int> bewteen = has_one["between"].get<std::vector<int>>();
-        //     //     for (auto &i : main_idsss)
-        //     //     {
-        //     //         if (i >= bewteen[0] && i <= bewteen[1] && foreign_id.find(i) == foreign_id.end())
-        //     //         {
-        //     //             std::cout << main_table.getName() << " column(" << has_one["by"].get<std::string>() << ") has " << i;
-        //     //             std::cout << ", but " << foreign_table.getName() << " column(" << has_one["to"].get<std::string>() << ") miss " << i << std::endl;
-        //     //         }
-        //     //     }
-        //     // }
-        // }
     }
 }

@@ -4,10 +4,13 @@
 #include <map>
 #include <vector>
 #include <set>
+#include <nlohmann/json.hpp>
+using json = nlohmann::json;
 
 enum ColumnType
 {
     ARRAY,
+    JSON,
     NUMBER,
     STRING,
     UNKNOWN
@@ -17,6 +20,7 @@ class Table
 private:
     std::string table_name;
     std::map<std::string, enum ColumnType> columns;
+    std::map<std::string, enum ColumnType> columns_type;
     // id 对应的行数 , 就可以通过 id:string 来应数据了
     std::map<std::string, uint32_t> id_to_row_number;
     // xlsx 文件
@@ -24,6 +28,7 @@ private:
     // xlsx 文件左下角的分页
     OpenXLSX::XLWorksheet sheet;
     uint32_t real_row_count;
+    uint32_t data_row_count;
     // 表头
     std::map<std::string, std::uint32_t> table_head;
     //数据
@@ -35,6 +40,7 @@ public:
     Table(std::string path, std::string table_name);
     std::map<std::string, std::uint32_t> getTableHead();
     std::vector<OpenXLSX::XLCellValue> getColumn(std::string column_name);
+    std::vector<OpenXLSX::XLCellValue> getColumnData(std::string column_name);
     //
     // std::vector<OpenXLSX::XLCellValue> getRawColumn(std::string column_name);
     // 主要是始初化 id_to_row_number id 到 行数的映射
@@ -48,6 +54,8 @@ public:
     bool checkColumnType(std::string column_name, std::string type);
     bool hasId(std::string id);
     int getRealRowCount();
+    void setColumnType(std::string column_name, std::string type);
+    ColumnType getColumnType(std::string column_name);
     std::string getName();
     std::map<std::string, enum ColumnType> getColumns();
     ~Table();

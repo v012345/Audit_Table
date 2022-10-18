@@ -87,6 +87,6 @@ int main(int argc, char const *argv[])
     xlsx_json_onput.close();
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-    std::cout << "run time " << duration.count() / 1000000 << " s" << std::endl;
+    std::cout << "convert xls to xlsx run time " << duration.count() / 1000000 << " s" << std::endl;
     return 0;
 }
