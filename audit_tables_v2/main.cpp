@@ -24,7 +24,6 @@ TableManager *tableManager = TableManager::GetInstance();
 int main()
 {
 
-
     system("chcp 65001");
     system(".\\xls2xlsx_master.exe");
     json rule;

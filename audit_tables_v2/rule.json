@@ -538,6 +538,16 @@
                     "name": "effect_ids",
                     "type": "array",
                     "delimiter": "|"
+                },
+                {
+                    "name": "buff_ids",
+                    "type": "array",
+                    "delimiter": "|"
+                },
+                {
+                    "name": "sound_id",
+                    "type": "array",
+                    "delimiter": "|"
                 }
             ]
         },
@@ -785,6 +795,10 @@
                 {
                     "name": "id",
                     "type": "number"
+                },
+                {
+                    "name": "next_effect_id",
+                    "type": "number"
                 }
             ]
         },
@@ -866,6 +880,11 @@
                 {
                     "name": "id",
                     "type": "number"
+                },
+                {
+                    "name": "access_type_id",
+                    "type": "array",
+                    "delimiter": "|"
                 }
             ]
         },
@@ -1239,6 +1258,11 @@
                 {
                     "name": "id",
                     "type": "number"
+                },
+                {
+                    "name": "item_id",
+                    "type": "array",
+                    "delimiter": "|"
                 }
             ]
         },
@@ -1517,6 +1541,10 @@
             "columns": [
                 {
                     "name": "id",
+                    "type": "number"
+                },
+                {
+                    "name": "name_id",
                     "type": "number"
                 }
             ]
@@ -3047,6 +3075,10 @@
             "columns": [
                 {
                     "name": "id",
+                    "type": "number"
+                },
+                {
+                    "name": "item_id",
                     "type": "number"
                 }
             ]
