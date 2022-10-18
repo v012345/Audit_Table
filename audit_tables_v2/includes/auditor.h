@@ -7,6 +7,7 @@
 #include <chrono>
 #include <mutex>
 #include <map>
+#include <regex>
 using json = nlohmann::json;
 
 void audit_init_table_config(json config);

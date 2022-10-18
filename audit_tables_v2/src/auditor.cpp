@@ -96,11 +96,54 @@ void audit_has_one_conditions(json rule)
             }
             else if (main_table->getColumnType(colunm_name) == JSON)
             {
-                 std::cout << main_table->getName() << " 列 " << colunm_name << " 为 JSON" << std::endl;
+                std::cout << main_table->getName() << " 列 " << colunm_name << " 为 JSON" << std::endl;
             }
             else if (main_table->getColumnType(colunm_name) == UNKNOWN)
             {
                 std::cout << main_table->getName() << " 列 " << colunm_name << " 未定义类型" << std::endl;
+            }
+            else if (main_table->getColumnType(colunm_name) == ARRAY)
+            {
+                // std::cout << main_table->getName() << " 列 " << colunm_name << " 为 ARRAY" << std::endl;
+                for (auto &&i : by)
+                {
+                    std::vector<std::string> v;
+
+                    if (i.type() == OpenXLSX::XLValueType::Integer)
+                    {
+                        v.push_back(std::to_string(i.get<int64_t>()));
+                    }
+                    else
+                    {
+                        // v = i.get<std::string>();
+                        // std::string s = "C*C++*Java";
+                        std::string s = i.get<std::string>();
+                        // std::regex regex("\\*");
+                        std::regex regex("\\|");
+
+                        // for (auto &s : out)
+                        // {
+                        //     std::cout << s << std::endl;
+                        // }
+                        v = std::vector<std::string>(
+                            std::sregex_token_iterator(s.begin(), s.end(), regex, -1),
+                            std::sregex_token_iterator());
+                    }
+                    for (auto &&id : v)
+                    {
+                        if (id == "-1")
+                        {
+                            continue;
+                        }
+                        if (!foreign_table->hasId(id))
+                        {
+                            std::cout << main_table->getName() << " 第 " << row_index << " 行 , 列 " << colunm_name << " 存在 " << id << std::endl;
+                            std::cout << foreign_table->getName() << " 缺少 id " << id << std::endl;
+                        }
+                    }
+
+                    row_index++;
+                }
             }
 
             //     main_table.insertForeignKeys(has_one["by"].get<std::string>());

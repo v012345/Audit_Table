@@ -536,7 +536,8 @@
                 },
                 {
                     "name": "effect_ids",
-                    "type": "number"
+                    "type": "array",
+                    "delimiter": "|"
                 }
             ]
         },
