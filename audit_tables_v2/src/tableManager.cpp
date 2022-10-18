@@ -42,3 +42,11 @@ Table *TableManager::getTable(std::string table_name)
     }
     return this->tables.find(table_name)->second;
 }
+
+void TableManager::touchTable(std::string table_name)
+{
+    if (!this->isExsit(table_name))
+    {
+        this->addTable(table_name);
+    }
+}

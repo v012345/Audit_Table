@@ -9,7 +9,9 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 add_executable(${PROJECT_NAME}
     main.cpp
     src/table.cpp
-    src/tableManager.cpp)
+    src/tableManager.cpp
+    src/auditor.cpp
+    )
 target_include_directories(${PROJECT_NAME}
     PRIVATE
     ${PROJECT_SOURCE_DIR}/includes

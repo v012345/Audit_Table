@@ -37,6 +37,7 @@ public:
     std::vector<OpenXLSX::XLCellValue> getColumn(std::string column_name);
     //
     // std::vector<OpenXLSX::XLCellValue> getRawColumn(std::string column_name);
+    // 主要是始初化 id_to_row_number id 到 行数的映射
     void init_primary_key_map(std::string primary_key);
     std::map<std::string, std::set<std::int32_t>> getForeignKeys();
     void insertForeignKeys(std::string foreign_key);

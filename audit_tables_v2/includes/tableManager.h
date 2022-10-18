@@ -17,6 +17,7 @@ public:
     static TableManager *GetInstance();
     Table* getTable(std::string table_name);
     bool addTable(std::string table_name);
+    void touchTable(std::string table_name);
     bool isExsit(std::string table_name);
     int getTableNumber();
 };
