@@ -31,6 +31,21 @@
             ]
         },
         {
+            "table": "entity_ai",
+            "exclude": [],
+            "has": [
+                {
+                    "table": "skill_attack",
+                    "between": [
+                        0,
+                        2147483647
+                    ],
+                    "by": "skill_ids",
+                    "to": "id"
+                }
+            ]
+        },
+        {
             "table": "action_attack",
             "exclude": [
                 902920,
@@ -778,6 +793,10 @@
                 {
                     "name": "id",
                     "type": "number"
+                },
+                {
+                    "name": "skill_ids",
+                    "type": "array"
                 }
             ]
         },

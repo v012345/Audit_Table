@@ -117,7 +117,7 @@ void audit_has_one_conditions(json rule)
                     if (exclude_row.find(row_index) != exclude_row.end())
                         continue;
                     std::string s = i.get<std::string>();
-                    std::regex regex("\\|");
+                    std::regex regex("\\||\\^");
                     std::vector<std::string> v(
                         std::sregex_token_iterator(s.begin(), s.end(), regex, -1),
                         std::sregex_token_iterator());
@@ -162,7 +162,7 @@ void audit_has_one_conditions(json rule)
                     else
                     {
                         std::string s = i.get<std::string>();
-                        std::regex regex("\\|");
+                        std::regex regex("\\||\\^");
                         v = std::vector<std::string>(
                             std::sregex_token_iterator(s.begin(), s.end(), regex, -1),
                             std::sregex_token_iterator());
