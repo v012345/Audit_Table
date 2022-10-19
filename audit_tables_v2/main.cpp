@@ -23,7 +23,6 @@ TableManager *tableManager = TableManager::GetInstance();
 
 int main()
 {
-
     system("chcp 65001");
     system(".\\xls2xlsx_master.exe");
     json rule;
@@ -32,6 +31,5 @@ int main()
     audit_column_type(rule["column_type_check"]);
     audit_has_one_conditions(rule["has_one_conditions"]);
     std::cout << "handled " << tableManager->getTableNumber() << " tables" << std::endl;
-    system("pause");
     return 0;
 }
