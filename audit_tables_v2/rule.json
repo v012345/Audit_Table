@@ -16,6 +16,21 @@
             ]
         },
         {
+            "table": "entity_role",
+            "exclude": [],
+            "has": [
+                {
+                    "table": "buff_base",
+                    "between": [
+                        0,
+                        2147483647
+                    ],
+                    "by": "buff_ids",
+                    "to": "id"
+                }
+            ]
+        },
+        {
             "table": "action_attack",
             "exclude": [
                 902920,
@@ -856,6 +871,14 @@
             "columns": [
                 {
                     "name": "id",
+                    "type": "number"
+                },
+                {
+                    "name": "buff_ids",
+                    "type": "array"
+                },
+                {
+                    "name": "res_fashion",
                     "type": "number"
                 }
             ]
