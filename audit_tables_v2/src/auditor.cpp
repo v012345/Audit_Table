@@ -99,10 +99,36 @@ void audit_has_one_conditions(json rule)
                     row_index++;
                 }
             }
-           
+
             else if (main_table->getColumnType(colunm_name) == JSON)
             {
-                std::cout << "表 " << main_table->getName() << " 列 " << colunm_name << " 为 JSON" << std::endl;
+                // std::cout << "表 " << main_table->getName() << " 列 " << colunm_name << " 为 JSON" << std::endl;
+                int key = has_one["index"].get<int>();
+                for (auto &&i : by)
+                {
+                    std::string s = i.get<std::string>();
+                    std::regex regex("\\|");
+                    std::vector<std::string> v(
+                        std::sregex_token_iterator(s.begin(), s.end(), regex, -1),
+                        std::sregex_token_iterator());
+                    std::string id = v.at(key);
+                    if (!std::regex_match(id, std::regex("^-?[0-9]+$")))
+                    {
+                        std::cout << "表 " << main_table->getName() << " 第 " << row_index << " 行 , 列 " << colunm_name << " 存在 " << id << " 不可以转化为数字" << std::endl;
+                        continue;
+                    }
+                    if (!(min <= std::stoi(id) && std::stoi(id) <= max))
+                    {
+                        continue;
+                    }
+
+                    if (!foreign_table->hasId(id))
+                    {
+                        std::cout << "表 " << main_table->getName() << " 第 " << row_index << " 行 , 列 " << colunm_name << " 存在 " << id << " . 但是";
+                        std::cout << "表 " << foreign_table->getName() << " 缺少 id " << id << std::endl;
+                    }
+                    row_index++;
+                }
             }
             else if (main_table->getColumnType(colunm_name) == UNKNOWN)
             {
