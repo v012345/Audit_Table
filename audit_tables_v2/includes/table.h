@@ -48,6 +48,7 @@ public:
     std::map<std::string, std::set<std::int32_t>> getForeignKeys();
     void insertForeignKeys(std::string foreign_key);
     void setPrimaryKey(std::string primary_key);
+    int64_t get_row_number_by_id(std::string id);
     std::set<std::int32_t> getForeignKey(std::string foreign_key);
     std::set<std::int32_t> getPrimaryKey();
     OpenXLSX::XLCellValue getData(std::string id, std::string column_name);

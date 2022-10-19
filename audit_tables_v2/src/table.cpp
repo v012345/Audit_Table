@@ -174,6 +174,10 @@ std::set<std::int32_t> Table::getForeignKey(std::string foreign_key)
 {
     return this->foreign_keys.at(foreign_key);
 }
+int64_t Table::get_row_number_by_id(std::string id)
+{
+    return this->id_to_row_number.at(id);
+}
 
 OpenXLSX::XLCellValue Table::getData(std::string id, std::string column_name)
 {

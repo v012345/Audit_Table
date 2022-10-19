@@ -2,11 +2,7 @@
     "has_one_conditions": [
         {
             "table": "buff_base",
-            "exclude": [
-                1,
-                2,
-                4
-            ],
+            "exclude": [],
             "has": [
                 {
                     "table": "buff_rule",
@@ -22,9 +18,8 @@
         {
             "table": "action_attack",
             "exclude": [
-                1,
-                2,
-                4
+                902920,
+                501750
             ],
             "has": [
                 {

@@ -61,8 +61,13 @@ void audit_has_one_conditions(json rule)
     {
         std::string main_table_name = has_one_condition["table"].get<std::string>();
         Table *main_table = tableManager->getTable(main_table_name);
+        std::vector<std::int64_t> exclude_id = has_one_condition["exclude"].get<std::vector<std::int64_t>>();
+        std::map<std::int64_t, bool> exclude_row;
+        for (auto &&id : exclude_id)
+        {
+            exclude_row.insert(std::make_pair(main_table->get_row_number_by_id(std::to_string(id)), true));
+        }
 
-        // std::cout << "====== " << main_table->getName() << " ====== " << std::endl;
         std::vector<json> has_ones = has_one_condition["has"].get<std::vector<json>>();
 
         //开打从表
@@ -78,6 +83,8 @@ void audit_has_one_conditions(json rule)
             {
                 for (auto &&i : by)
                 {
+                    if (exclude_row.find(row_index) != exclude_row.end())
+                        continue;
                     std::string v;
 
                     if (i.type() == OpenXLSX::XLValueType::Integer)
@@ -90,6 +97,7 @@ void audit_has_one_conditions(json rule)
                     }
                     if (min <= std::stoi(v) && std::stoi(v) <= max)
                     {
+
                         if (!foreign_table->hasId(v))
                         {
                             std::cout << "表 " << main_table->getName() << " 第 " << row_index << " 行 , 列 " << colunm_name << " 存在 " << v << " . 但是";
@@ -106,24 +114,28 @@ void audit_has_one_conditions(json rule)
                 int key = has_one["index"].get<int>();
                 for (auto &&i : by)
                 {
+                    if (exclude_row.find(row_index) != exclude_row.end())
+                        continue;
                     std::string s = i.get<std::string>();
                     std::regex regex("\\|");
                     std::vector<std::string> v(
                         std::sregex_token_iterator(s.begin(), s.end(), regex, -1),
                         std::sregex_token_iterator());
                     std::string id = v.at(key);
+
                     if (!std::regex_match(id, std::regex("^-?[0-9]+$")))
                     {
+
                         std::cout << "表 " << main_table->getName() << " 第 " << row_index << " 行 , 列 " << colunm_name << " 存在 " << id << " 不可以转化为数字" << std::endl;
                         continue;
                     }
+
                     if (!(min <= std::stoi(id) && std::stoi(id) <= max))
-                    {
                         continue;
-                    }
 
                     if (!foreign_table->hasId(id))
                     {
+
                         std::cout << "表 " << main_table->getName() << " 第 " << row_index << " 行 , 列 " << colunm_name << " 存在 " << id << " . 但是";
                         std::cout << "表 " << foreign_table->getName() << " 缺少 id " << id << std::endl;
                     }
@@ -139,6 +151,8 @@ void audit_has_one_conditions(json rule)
                 // std::cout << main_table->getName() << " 列 " << colunm_name << " 为 ARRAY" << std::endl;
                 for (auto &&i : by)
                 {
+                    if (exclude_row.find(row_index) != exclude_row.end())
+                        continue;
                     std::vector<std::string> v;
 
                     if (i.type() == OpenXLSX::XLValueType::Integer)
@@ -155,19 +169,19 @@ void audit_has_one_conditions(json rule)
                     }
                     for (auto &&id : v)
                     {
+
                         if (!std::regex_match(id, std::regex("^-?[0-9]+$")))
                         {
+
                             std::cout << "表 " << main_table->getName() << " 第 " << row_index << " 行 , 列 " << colunm_name << " 存在 " << id << " 不可以转化为数字" << std::endl;
                             continue;
                         }
-
                         if (!(min <= std::stoi(id) && std::stoi(id) <= max))
-                        {
                             continue;
-                        }
 
                         if (!foreign_table->hasId(id))
                         {
+
                             std::cout << "表 " << main_table->getName() << " 第 " << row_index << " 行 , 列 " << colunm_name << " 存在 " << id << " . 但是";
                             std::cout << "表 " << foreign_table->getName() << " 缺少 id " << id << std::endl;
                         }
