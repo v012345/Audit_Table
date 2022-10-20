@@ -16,6 +16,48 @@
             ]
         },
         {
+            "table": "item_fashion_suit",
+            "exclude": [],
+            "has": [
+                {
+                    "table": "item_fashion_role_type1",
+                    "between": [
+                        0,
+                        2147483647
+                    ],
+                    "by": "suit_parts",
+                    "to": "primary_key"
+                },
+                {
+                    "table": "item_fashion_role_type2",
+                    "between": [
+                        0,
+                        2147483647
+                    ],
+                    "by": "suit_parts",
+                    "to": "primary_key"
+                },
+                {
+                    "table": "item_fashion_role_type3",
+                    "between": [
+                        0,
+                        2147483647
+                    ],
+                    "by": "suit_parts",
+                    "to": "primary_key"
+                },
+                {
+                    "table": "item_fashion_role_type4",
+                    "between": [
+                        0,
+                        2147483647
+                    ],
+                    "by": "suit_parts",
+                    "to": "primary_key"
+                }
+            ]
+        },
+        {
             "table": "other_shop_shelf",
             "exclude": [
                 2
@@ -1281,6 +1323,11 @@
                 {
                     "name": "id",
                     "type": "number"
+                },
+                {
+                    "name": "suit_parts",
+                    "type": "array",
+                    "delimiter": "|"
                 }
             ]
         },
