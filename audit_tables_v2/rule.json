@@ -16,6 +16,23 @@
             ]
         },
         {
+            "table": "other_shop_shelf",
+            "exclude": [
+                2
+            ],
+            "has": [
+                {
+                    "table": "other_shop_goods",
+                    "between": [
+                        0,
+                        2147483647
+                    ],
+                    "by": "goods_id",
+                    "to": "id"
+                }
+            ]
+        },
+        {
             "table": "entity_role",
             "exclude": [],
             "has": [
@@ -32,7 +49,15 @@
         },
         {
             "table": "entity_ai",
-            "exclude": [],
+            "exclude": [
+                112980,
+                112990,
+                113000,
+                114750,
+                114760,
+                114770,
+                20000
+            ],
             "has": [
                 {
                     "table": "skill_attack",
@@ -3135,6 +3160,11 @@
                 {
                     "name": "id",
                     "type": "number"
+                },
+                {
+                    "name": "goods_id",
+                    "type": "array",
+                    "delimiter": "|"
                 }
             ]
         },
