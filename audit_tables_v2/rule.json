@@ -131,6 +131,21 @@
             ]
         },
         {
+            "table": "item_money",
+            "exclude": [],
+            "has": [
+                {
+                    "table": "config_get_type",
+                    "between": [
+                        1,
+                        2147483647
+                    ],
+                    "by": "access_type_id",
+                    "to": "id"
+                }
+            ]
+        },
+        {
             "table": "item_artifact_config_type2",
             "exclude": [],
             "has": [
@@ -540,6 +555,24 @@
                         109999
                     ],
                     "by": "item_id",
+                    "to": "id"
+                },
+                {
+                    "table": "item_material",
+                    "between": [
+                        10000,
+                        13999
+                    ],
+                    "by": "pay_type",
+                    "to": "id"
+                },
+                {
+                    "table": "item_material",
+                    "between": [
+                        100000,
+                        109999
+                    ],
+                    "by": "pay_type",
                     "to": "id"
                 }
             ]
@@ -1379,6 +1412,11 @@
                 {
                     "name": "id",
                     "type": "number"
+                },
+                {
+                    "name": "access_type_id",
+                    "type": "array",
+                    "delimiter": "|"
                 }
             ]
         },
@@ -3141,6 +3179,10 @@
                 },
                 {
                     "name": "item_id",
+                    "type": "number"
+                },
+                {
+                    "name": "pay_type",
                     "type": "number"
                 }
             ]
