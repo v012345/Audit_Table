@@ -52,13 +52,9 @@ static int GetRowById(lua_State *L)
     const char *table_name = lua_tostring(L, 1);
     const char *id = lua_tostring(L, 2);
     lua_newtable(L);
-
-    // set first element "1" to value 45
     Table *table = tableManager->getTable(table_name);
-
     for (auto &&i : table->getRowData(id))
     {
-        // std::cout << i.first << " " << i.second << std::endl;
         lua_pushstring(L, i.first.c_str());
         if (i.second.type() == OpenXLSX::XLValueType::Integer)
         {
@@ -71,10 +67,6 @@ static int GetRowById(lua_State *L)
 
         lua_settable(L, -3);
     }
-
-    // lua_pushnumber(L, 2);
-    // lua_pushnumber(L, 90);
-    // lua_settable(L, -3);
     return 1;
 
     // lua_newtable(L);             //创建一个表格，放在栈顶
@@ -93,6 +85,15 @@ static int GetRowById(lua_State *L)
     // lua_pushnumber(L, 77);
     // lua_settable(L, -3);
     // return 1; //堆栈里现在就一个table.其他都被弹掉了。
+}
+
+static int IsHasId(lua_State *L)
+{
+    const char *table_name = lua_tostring(L, 1);
+    const char *id = lua_tostring(L, 2);
+    Table *table = tableManager->getTable(table_name);
+    lua_pushboolean(L, table->hasId(id));
+    return 1;
 }
 
 int main(int argc, const char *argv[])
@@ -116,6 +117,7 @@ int main(int argc, const char *argv[])
     lua_register(L, "CallMyCppFunction", MyCppFunction);             // register our C++ function with Lua
     lua_register(L, "GetTableDataRowNumber", GetTableDataRowNumber); // register our C++ function with Lua
     lua_register(L, "GetRowById", GetRowById);                       // register our C++ function with Lua
+    lua_register(L, "IsHasId", IsHasId);                             // register our C++ function with Lua
     luaL_dofile(L, "./scripts/main.lua");                            // loads the Lua script
     // std::cout << "handled " << tableManager->getTableNumber() << " tables" << std::endl;
     return 0;

@@ -13,4 +13,8 @@ function table_buff_base:getRowById(id)
     return GetRowById(self.name, id)
 end
 
+function table_buff_base:isHasId(id)
+    return IsHasId(self.name, id)
+end
+
 return table_buff_base
