@@ -9,8 +9,8 @@ function table_buff_base:getDataRowCount()
     return GetTableDataRowNumber(self.name)
 end
 
-function table_buff_base:getRowById(id)
-    return GetRowById(self.name, id)
+function table_buff_base:GetRowDataById(id)
+    return GetRowDataById(self.name, id)
 end
 
 function table_buff_base:isHasId(id)
@@ -19,6 +19,10 @@ end
 
 function table_buff_base:getColumnByName(column_name)
     return GetColumnByName(self.name, column_name)
+end
+
+function table_buff_base:getRowDataByRowNumber(row_number)
+    return GetRowDataByRowNumber(self.name, row_number)
 end
 
 return table_buff_base

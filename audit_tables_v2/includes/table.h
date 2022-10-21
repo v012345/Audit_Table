@@ -42,6 +42,7 @@ public:
     std::vector<OpenXLSX::XLCellValue> getColumn(std::string column_name);
     std::vector<OpenXLSX::XLCellValue> getColumnData(std::string column_name);
     std::map<std::string, OpenXLSX::XLCellValue> getRowData(std::string id);
+    std::map<std::string, OpenXLSX::XLCellValue> getRowDataByRowNumber(int row_number);
     //
     // std::vector<OpenXLSX::XLCellValue> getRawColumn(std::string column_name);
     // 主要是始初化 id_to_row_number id 到 行数的映射

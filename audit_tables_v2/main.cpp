@@ -46,7 +46,7 @@ static int GetTableDataRowNumber(lua_State *L)
     return 1;
 }
 
-static int GetRowById(lua_State *L)
+static int GetRowDataById(lua_State *L)
 {
 
     const char *table_name = lua_tostring(L, 1);
@@ -122,7 +122,27 @@ static int GetColumnByName(lua_State *L)
     // lua_pushboolean(L, table->hasId(id));
     return 1;
 }
-
+static int GetRowDataByRowNumber(lua_State *L)
+{
+    const char *table_name = lua_tostring(L, 1);
+    int row_number = lua_tointeger(L, 2) + 1; // lua 没有表头 , c++ 里有表头 , 所以差了一行
+    lua_newtable(L);
+    Table *table = tableManager->getTable(table_name);
+    for (auto &&i : table->getRowDataByRowNumber(row_number))
+    {
+        lua_pushstring(L, i.first.c_str());
+        if (i.second.type() == OpenXLSX::XLValueType::Integer)
+        {
+            lua_pushstring(L, std::to_string(i.second.get<int64_t>()).c_str());
+        }
+        else
+        {
+            lua_pushstring(L, i.second.get<std::string>().c_str());
+        }
+        lua_settable(L, -3);
+    }
+    return 1;
+}
 int main(int argc, const char *argv[])
 {
     system("chcp 65001");
@@ -144,9 +164,10 @@ int main(int argc, const char *argv[])
     luaL_openlibs(L);                                                // give lua access to basic libraries
     lua_register(L, "CallMyCppFunction", MyCppFunction);             // register our C++ function with Lua
     lua_register(L, "GetTableDataRowNumber", GetTableDataRowNumber); // register our C++ function with Lua
-    lua_register(L, "GetRowById", GetRowById);                       // register our C++ function with Lua
+    lua_register(L, "GetRowDataById", GetRowDataById);               // register our C++ function with Lua
     lua_register(L, "IsHasId", IsHasId);                             // register our C++ function with Lua
-    lua_register(L, "GetColumnByName", GetColumnByName);                             // register our C++ function with Lua
+    lua_register(L, "GetColumnByName", GetColumnByName);             // register our C++ function with Lua
+    lua_register(L, "GetRowDataByRowNumber", GetRowDataByRowNumber); // register our C++ function with Lua
     luaL_dofile(L, "./scripts/main.lua");                            // loads the Lua script
     std::cout << "handled " << tableManager->getTableNumber() << " tables" << std::endl;
     return 0;
