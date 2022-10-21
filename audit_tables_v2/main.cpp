@@ -38,6 +38,14 @@ static int MyCppFunction(lua_State *L) // Lua callable functions must be this fo
     return 0; // how many params we're passing to Lua
 }
 
+static int GetTableDataRowNumber(lua_State *L)
+{
+    const char *table_name = lua_tostring(L, 1);
+    lua_Integer row_count = tableManager->getTable(table_name)->getDataRowCount();
+    lua_pushinteger(L, row_count);
+    return 1;
+}
+
 int main(int argc, const char *argv[])
 {
     system("chcp 65001");
@@ -48,16 +56,17 @@ int main(int argc, const char *argv[])
     // lua_pushstring(L, "From C++ to Lua"); // push string as second param
     // lua_pcall(L, 2, 0, 0);                // call the function passing 2 params
 
-    // system(".\\xls2xlsx_master.exe");
-    // json rule;
-    // std::ifstream("rule.json") >> rule;
-    // audit_init_table_config(rule["table_config"]);
-    // audit_column_type(rule["column_type_check"]);
-    // audit_has_one_conditions(rule["has_one_conditions"]);
-    lua_State *L = luaL_newstate();                      // create a new lua instance
-    luaL_openlibs(L);                                    // give lua access to basic libraries
-    lua_register(L, "CallMyCppFunction", MyCppFunction); // register our C++ function with Lua
-    luaL_dofile(L, "./scripts/main.lua");                // loads the Lua script
+    system(".\\xls2xlsx_master.exe");
+    json rule;
+    std::ifstream("rule.json") >> rule;
+    audit_init_table_config(rule["table_config"]);
+    audit_column_type(rule["column_type_check"]);
+    audit_has_one_conditions(rule["has_one_conditions"]);
+    lua_State *L = luaL_newstate();                                  // create a new lua instance
+    luaL_openlibs(L);                                                // give lua access to basic libraries
+    lua_register(L, "CallMyCppFunction", MyCppFunction);             // register our C++ function with Lua
+    lua_register(L, "GetTableDataRowNumber", GetTableDataRowNumber); // register our C++ function with Lua
+    luaL_dofile(L, "./scripts/main.lua");                            // loads the Lua script
     // std::cout << "handled " << tableManager->getTableNumber() << " tables" << std::endl;
     return 0;
 }

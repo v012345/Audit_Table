@@ -55,6 +55,7 @@ public:
     bool checkColumnType(std::string column_name, std::string type);
     bool hasId(std::string id);
     int getRealRowCount();
+    int getDataRowCount();
     void setColumnType(std::string column_name, std::string type);
     ColumnType getColumnType(std::string column_name);
     std::string getName();

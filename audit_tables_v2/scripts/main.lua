@@ -2,6 +2,9 @@ print("start executing lua scripts")
 package.path = './scripts/?.lua;' .. package.path
 require "table_buff_base"
 print(table_buff_base:getName())
+print(table_buff_base:getDataRowCount())
+
+
 
 
 -- call C++ function from Lua --

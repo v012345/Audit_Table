@@ -162,6 +162,14 @@ void Table::init_primary_key_map(std::string primary_ke)
     this->real_row_count = row_index;
     this->data_row_count = row_index - 1;
 }
+int Table::getRealRowCount()
+{
+    return this->real_row_count;
+}
+int Table::getDataRowCount()
+{
+    return this->data_row_count;
+}
 std::map<std::string, std::set<std::int32_t>> Table::getForeignKeys()
 {
     return this->foreign_keys;
