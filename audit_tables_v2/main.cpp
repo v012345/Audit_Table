@@ -96,6 +96,33 @@ static int IsHasId(lua_State *L)
     return 1;
 }
 
+static int GetColumnByName(lua_State *L)
+{
+    const char *table_name = lua_tostring(L, 1);
+    const char *column_name = lua_tostring(L, 2);
+    lua_newtable(L);
+    Table *table = tableManager->getTable(table_name);
+    auto column_data = table->getColumnData(column_name);
+    int i = 1;
+    for (auto &&data : column_data)
+    {
+        lua_pushinteger(L, i);
+        if (data.type() == OpenXLSX::XLValueType::Integer)
+        {
+            lua_pushstring(L, std::to_string(data.get<int64_t>()).c_str());
+        }
+        else
+        {
+            lua_pushstring(L, data.get<std::string>().c_str());
+        }
+        lua_settable(L, -3);
+        i++;
+    }
+
+    // lua_pushboolean(L, table->hasId(id));
+    return 1;
+}
+
 int main(int argc, const char *argv[])
 {
     system("chcp 65001");
@@ -111,6 +138,7 @@ int main(int argc, const char *argv[])
     std::ifstream("rule.json") >> rule;
     audit_init_table_config(rule["table_config"]);
     audit_column_type(rule["column_type_check"]);
+    // std::cout << tableManager->getTable("buff_base")->getDataRowCount() << std::endl;
     audit_has_one_conditions(rule["has_one_conditions"]);
     lua_State *L = luaL_newstate();                                  // create a new lua instance
     luaL_openlibs(L);                                                // give lua access to basic libraries
@@ -118,7 +146,8 @@ int main(int argc, const char *argv[])
     lua_register(L, "GetTableDataRowNumber", GetTableDataRowNumber); // register our C++ function with Lua
     lua_register(L, "GetRowById", GetRowById);                       // register our C++ function with Lua
     lua_register(L, "IsHasId", IsHasId);                             // register our C++ function with Lua
+    lua_register(L, "GetColumnByName", GetColumnByName);                             // register our C++ function with Lua
     luaL_dofile(L, "./scripts/main.lua");                            // loads the Lua script
-    // std::cout << "handled " << tableManager->getTableNumber() << " tables" << std::endl;
+    std::cout << "handled " << tableManager->getTableNumber() << " tables" << std::endl;
     return 0;
 }

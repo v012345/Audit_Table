@@ -133,9 +133,9 @@ void Table::insertForeignKeys(std::string foreign_key)
 
     this->foreign_keys.insert(std::make_pair(foreign_key, foreign_keys));
 }
-void Table::init_primary_key_map(std::string primary_ke)
+void Table::init_primary_key_map(std::string primary_key)
 {
-    uint32_t column_index = this->table_head.at(primary_ke);
+    uint32_t column_index = this->table_head.at(primary_key);
     uint32_t row_index = 1;
     OpenXLSX::XLRowIterator row = this->sheet.rows().begin();
     while (row != this->sheet.rows().end())
@@ -159,8 +159,8 @@ void Table::init_primary_key_map(std::string primary_ke)
         row++;
         row_index++;
     }
-    this->real_row_count = row_index;
-    this->data_row_count = row_index - 1;
+    this->real_row_count = row_index - 1;
+    this->data_row_count = row_index - 2;
 }
 int Table::getRealRowCount()
 {
@@ -213,7 +213,7 @@ std::vector<OpenXLSX::XLCellValue> Table::getColumnData(std::string column_name)
 {
     if (this->data.find(column_name) == this->data.end())
     {
-        OpenXLSX::XLRowRange rows = sheet.rows(2, this->data_row_count);
+        OpenXLSX::XLRowRange rows = sheet.rows(2, this->real_row_count);
         std::vector<OpenXLSX::XLCellValue> column_data;
         auto column_index = this->table_head.at(column_name);
         for (auto &&row : rows)

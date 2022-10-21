@@ -17,4 +17,8 @@ function table_buff_base:isHasId(id)
     return IsHasId(self.name, id)
 end
 
+function table_buff_base:getColumnByName(column_name)
+    return GetColumnByName(self.name, column_name)
+end
+
 return table_buff_base

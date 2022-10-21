@@ -14,3 +14,9 @@ function GetRowById(table_name, id) end
 ---@param id string|number 主键id
 ---@return boolean
 function IsHasId(table_name, id) end
+
+---返回表对应列的数据
+---@param table_name string 表名
+---@param column_name string 列名
+---@return table
+function GetColumnByName(table_name, column_name) end
