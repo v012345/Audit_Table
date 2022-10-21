@@ -187,6 +187,19 @@ int64_t Table::get_row_number_by_id(std::string id)
     return this->id_to_row_number.at(id);
 }
 
+std::map<std::string, OpenXLSX::XLCellValue> Table::getRowData(std::string id)
+{
+    std::map<std::string, OpenXLSX::XLCellValue> row_table;
+    OpenXLSX::XLRow row = this->sheet.row(this->get_row_number_by_id(id));
+    std::vector<OpenXLSX::XLCellValue> row_data = row.values<std::vector<OpenXLSX::XLCellValue>>();
+    for (auto &&i : this->table_head)
+    {
+        row_table.insert(std::make_pair(i.first, row_data.at(i.second)));
+    }
+
+    return row_table;
+}
+
 OpenXLSX::XLCellValue Table::getData(std::string id, std::string column_name)
 {
     return this->sheet.row(this->id_to_row_number.at(id)).values<std::vector<OpenXLSX::XLCellValue>>().at(this->table_head.at(column_name));

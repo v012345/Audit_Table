@@ -4,7 +4,16 @@ require "table_buff_base"
 print(table_buff_base:getName())
 print(table_buff_base:getDataRowCount())
 
+local a = table_buff_base:getRowById(2)
+for key, value in pairs(a) do
+    print(key .. "  :  " .. value)
+end
 
+a = table_buff_base:getRowById("3")
+
+for key, value in pairs(a) do
+    print(key .. "  :  " .. value)
+end
 
 
 -- call C++ function from Lua --

@@ -9,4 +9,8 @@ function table_buff_base:getDataRowCount()
     return GetTableDataRowNumber(self.name)
 end
 
+function table_buff_base:getRowById(id)
+    return GetRowById(self.name, id)
+end
+
 return table_buff_base
