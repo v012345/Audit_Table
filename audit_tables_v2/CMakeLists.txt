@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.20.0)
 project(audit_tables_v2)
 
+add_subdirectory(lua-5.4.4)
+
 # set(JSON_Install OFF CACHE INTERNAL "")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
@@ -15,8 +17,10 @@ add_executable(${PROJECT_NAME}
 target_include_directories(${PROJECT_NAME}
     PRIVATE
     ${PROJECT_SOURCE_DIR}/includes
+    ${PROJECT_SOURCE_DIR}/lua-5.4.4/src
 )
-target_link_libraries(${PROJECT_NAME} OpenXLSX::OpenXLSX nlohmann_json::nlohmann_json)
+target_link_libraries(${PROJECT_NAME} OpenXLSX::OpenXLSX nlohmann_json::nlohmann_json lualib)
+
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 
 list(APPEND EXE_FILE_LOCATION Release Debug)
