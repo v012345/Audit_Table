@@ -13,7 +13,7 @@ add_executable(${PROJECT_NAME}
     src/table.cpp
     src/tableManager.cpp
     src/auditor.cpp
-    )
+)
 target_include_directories(${PROJECT_NAME}
     PRIVATE
     ${PROJECT_SOURCE_DIR}/includes
@@ -32,4 +32,10 @@ foreach(LOCATION IN LISTS EXE_FILE_LOCATION)
         ${CMAKE_CURRENT_SOURCE_DIR}/rule.json
         ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${LOCATION}/rule.json
     )
+
+    file(GLOB LUA_SCRIPTS scripts/*.lua)
+    file(MAKE_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${LOCATION}/scripts)
+    foreach(lua_script IN LISTS LUA_SCRIPTS)
+        configure_file(${lua_script} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${LOCATION}/scripts/ COPYONLY)
+    endforeach()
 endforeach()
