@@ -9,9 +9,12 @@ Table::Table(std::string path, std::string table_name) : table_name(table_name)
     uint16_t column_index = 0;
     for (auto &&value : std::vector<OpenXLSX::XLCellValue>(row->values()))
     {
-        this->columns.insert(std::make_pair(value.get<std::string>(), UNKNOWN));
-        this->columns_type.insert(std::make_pair(value.get<std::string>(), UNKNOWN));
-        this->table_head.insert(std::make_pair(value.get<std::string>(), column_index++));
+        if (value.type() != OpenXLSX::XLValueType::Empty)
+        {
+            this->columns.insert(std::make_pair(value.get<std::string>(), UNKNOWN));
+            this->columns_type.insert(std::make_pair(value.get<std::string>(), UNKNOWN));
+            this->table_head.insert(std::make_pair(value.get<std::string>(), column_index++));
+        }
     }
 }
 std::map<std::string, enum ColumnType> Table::getColumns()
