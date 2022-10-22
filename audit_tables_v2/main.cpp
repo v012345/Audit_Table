@@ -169,9 +169,9 @@ int main(int argc, const char *argv[])
     json rule;
     std::ifstream("rule.json") >> rule;
     audit_init_table_config(rule["table_config"]);
-    audit_column_type(rule["column_type_check"]);
+    // audit_column_type(rule["column_type_check"]);
     // std::cout << tableManager->getTable("entity_ai")->getDataRowCount() << std::endl;
-    audit_has_one_conditions(rule["has_one_conditions"]);
+    // audit_has_one_conditions(rule["has_one_conditions"]);
     lua_State *L = luaL_newstate();                                  // create a new lua instance
     luaL_openlibs(L);                                                // give lua access to basic libraries
     lua_register(L, "GetTableDataRowNumber", GetTableDataRowNumber); // register our C++ function with Lua
