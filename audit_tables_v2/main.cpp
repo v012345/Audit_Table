@@ -134,7 +134,7 @@ static int GetRowDataByRowNumber(lua_State *L)
     int row_number = lua_tointeger(L, 2) + 1; // lua 没有表头 , c++ 里有表头 , 所以差了一行
     lua_newtable(L);
     Table *table = tableManager->getTable(table_name);
-    if (row_number < 1 || row_number > table->getDataRowCount())
+    if (row_number < 1 || row_number > table->getRealRowCount())
     {
         std::cerr << "表 " << table_name << " 不存在 " << row_number << " 行\n";
         return 0;
@@ -170,7 +170,7 @@ int main(int argc, const char *argv[])
     std::ifstream("rule.json") >> rule;
     audit_init_table_config(rule["table_config"]);
     audit_column_type(rule["column_type_check"]);
-    // std::cout << tableManager->getTable("buff_base")->getDataRowCount() << std::endl;
+    // std::cout << tableManager->getTable("entity_ai")->getDataRowCount() << std::endl;
     audit_has_one_conditions(rule["has_one_conditions"]);
     lua_State *L = luaL_newstate();                                  // create a new lua instance
     luaL_openlibs(L);                                                // give lua access to basic libraries
