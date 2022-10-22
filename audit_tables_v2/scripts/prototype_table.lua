@@ -9,7 +9,7 @@ function prototype_table:getDataRowCount()
     return GetTableDataRowNumber(self.name)
 end
 
-function prototype_table:GetRowDataById(id)
+function prototype_table:getRowDataById(id)
     return GetRowDataById(self.name, id)
 end
 

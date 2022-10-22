@@ -43,6 +43,12 @@ static int GetRowDataById(lua_State *L)
     const char *id = lua_tostring(L, 2);
     lua_newtable(L);
     Table *table = tableManager->getTable(table_name);
+    if (!table->hasId(id))
+    {
+        std::cerr << "表 " << table_name << " 不存在 id " << id << "\n";
+        return 0;
+    }
+
     for (auto &&i : table->getRowData(id))
     {
         lua_pushstring(L, i.first.c_str());
@@ -92,7 +98,17 @@ static int GetColumnByName(lua_State *L)
     const char *column_name = lua_tostring(L, 2);
     lua_newtable(L);
     Table *table = tableManager->getTable(table_name);
-    auto column_data = table->getColumnData(column_name);
+    std::vector<OpenXLSX::XLCellValue> column_data;
+    try
+    {
+        column_data = table->getColumnData(column_name);
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << "表 " << table_name << " 不存在 " << column_name << " 列\n";
+        return 0;
+    }
+
     int i = 1;
     for (auto &&data : column_data)
     {
@@ -118,6 +134,12 @@ static int GetRowDataByRowNumber(lua_State *L)
     int row_number = lua_tointeger(L, 2) + 1; // lua 没有表头 , c++ 里有表头 , 所以差了一行
     lua_newtable(L);
     Table *table = tableManager->getTable(table_name);
+    if (row_number < 1 || row_number > table->getDataRowCount())
+    {
+        std::cerr << "表 " << table_name << " 不存在 " << row_number << " 行\n";
+        return 0;
+    }
+
     for (auto &&i : table->getRowDataByRowNumber(row_number))
     {
         lua_pushstring(L, i.first.c_str());
