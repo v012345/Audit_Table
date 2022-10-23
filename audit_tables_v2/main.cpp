@@ -56,6 +56,10 @@ static int GetRowDataById(lua_State *L)
         {
             lua_pushstring(L, std::to_string(i.second.get<int64_t>()).c_str());
         }
+        else if (i.second.type() == OpenXLSX::XLValueType::Float)
+        {
+            lua_pushstring(L, std::to_string(i.second.get<float>()).c_str());
+        }
         else
         {
             lua_pushstring(L, i.second.get<std::string>().c_str());
@@ -117,6 +121,10 @@ static int GetColumnByName(lua_State *L)
         {
             lua_pushstring(L, std::to_string(data.get<int64_t>()).c_str());
         }
+        else if (data.type() == OpenXLSX::XLValueType::Float)
+        {
+            lua_pushstring(L, std::to_string(data.get<float>()).c_str());
+        }
         else
         {
             lua_pushstring(L, data.get<std::string>().c_str());
@@ -146,6 +154,10 @@ static int GetRowDataByRowNumber(lua_State *L)
         if (i.second.type() == OpenXLSX::XLValueType::Integer)
         {
             lua_pushstring(L, std::to_string(i.second.get<int64_t>()).c_str());
+        }
+        else if (i.second.type() == OpenXLSX::XLValueType::Float)
+        {
+            lua_pushstring(L, std::to_string(i.second.get<float>()).c_str());
         }
         else
         {
